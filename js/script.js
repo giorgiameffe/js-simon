@@ -15,9 +15,6 @@ const numberList = document.getElementById('numbers-list');
 // Form
 const answerForm = document.getElementById('answers-form');
 
-// Inputs
-const inputElements = document.querySelectorAll('input');
-
 // Button
 const buttonElement = document.querySelector('button');
 
@@ -44,6 +41,8 @@ function countDown () {
 
 function generateRandomNumbers (min, max) {
 
+    // creazione array per numeri random
+
     const randomArray = [];
     const arrayLength = 5;
     for (let i = 0; i < arrayLength; i++) {
@@ -58,16 +57,40 @@ const cpuNumbers = generateRandomNumbers(1, 50);
 console.log(cpuNumbers);
 
 // iterare array per generare numeri singoli
-// creare lista html
 
 for (i = 0; i < cpuNumbers.length; i++) {
 
     currentNumber = cpuNumbers[i];
-    console.log(currentNumber);
+    // creare lista html
     const listElement = document.createElement('li');
     listElement.innerHTML = currentNumber;
     numberList.appendChild(listElement);
 }
+
+// evento scatenante il click del bottone
+
+answerForm.addEventListener ("submit", function(event) {
+
+    event.preventDefault();
+
+    // creazione array per numeri utente
+
+    const userNumbers = [];
+    const inputElements = document.querySelectorAll('input');
+
+    for (let i = 0; i < inputElements.length; i++) {
+        
+        const inputNumberElement = parseInt(inputElements[i].value);
+        userNumbers.push(inputNumberElement);
+        console.log(userNumbers);
+    }
+
+})
+
+
+
+
+
 
 
 
