@@ -10,7 +10,7 @@ const instructionsElement = document.getElementById('instructions');
 console.log(instructionsElement);
 
 // List
-const numberList = document.getElementById('number-list');
+const numberList = document.getElementById('numbers-list');
 
 // Form
 const answerForm = document.getElementById('answers-form');
@@ -36,6 +36,7 @@ function countDown () {
         clearInterval(countdownElement);
         instructionsElement.innerText = "Inserisci tutti i numeri che ricordi (l'ordine non è importante)";
         answerForm.classList.remove('d-none');
+        numberList.classList.add('d-none');
     }       
 }
 
@@ -49,11 +50,26 @@ function generateRandomNumbers (min, max) {
         const randomNum =  Math.ceil((Math.random() * max - min) + min);
         randomArray.push(randomNum);
     }
+
     return randomArray;
 }
 
-const casualNumbers = generateRandomNumbers(1, 50);
-console.log(casualNumbers);
+const cpuNumbers = generateRandomNumbers(1, 50);
+console.log(cpuNumbers);
+
+// iterare array per generare numeri singoli
+// creare lista html
+
+for (i = 0; i < cpuNumbers.length; i++) {
+
+    currentNumber = cpuNumbers[i];
+    console.log(currentNumber);
+    const listElement = document.createElement('li');
+    listElement.innerHTML = currentNumber;
+    numberList.appendChild(listElement);
+}
+
+
 
 
 
